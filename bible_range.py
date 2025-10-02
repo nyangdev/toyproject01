@@ -26,7 +26,7 @@ def bible_range():
                             start_index = key_list.index(start)
                             for i in range(start_index, start_index + int(n)):
                                 key = key_list[i]
-                                print(f"{key}\n{bible_dict[key]}")
+                                print(f"[{key}]\n{bible_dict[key]}")
                             break
                     break
                 # 해당 구절이 bible안에 없는 경우
