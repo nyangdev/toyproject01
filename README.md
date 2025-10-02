@@ -1,26 +1,35 @@
 # ✝️️ 창세기 in Terminal: 말씀 한 줄, 은혜 한 모금 🕊️
-
 ---
 
 > **🌟 "태초에 하나님이 천지를 창조하시니라." (창세기 1:1)**
 
 - 2025.09.29 - 2025.10.02
 - 영문 성경을 찾아 읽을 수 있는 프로그램입니다. 
-- 원하는 구절을 찾아보고 오늘의 구문도 확인해보세요.
+- 원하는 구절을 찾아보고 오늘의 말씀도 확인해보세요.
 ---
 
 ## 🗂️ 프로젝트 구조
 
 ```markdown
-    .
-    ├── README.md
-    ├── bible-env.txt  # conda 환경 파일
-    ├── bible.txt      # 원시 데이터
-    ├── bible_csv.csv  # 원천 데이터
-    ├── bible_csv.py   # 데이터 전처리
-    └── bible_search.py  # main. 메뉴 호출
-    
-    2 directories, 11 files
+.
+├── README.md
+├── __pycache__
+├── bible.txt  # 원시 데이터
+├── bible_cloud.py
+├── bible_count.py
+├── bible_csv.csv  # 원천 데이터
+├── bible_csv.py  # 데이터 전처리
+├── bible_file.py
+├── bible_file_open.py
+├── bible_range.py
+├── bible_search.py
+├── bible_today.py
+├── bible_word.py
+├── cross.png
+├── main.py  # entry point
+└── requirements.txt
+
+2 directories, 15 files
 ```
 
 ---
@@ -32,16 +41,16 @@
 
 ## 🚀 시작하기
 
+### Conda 환경 저장
+```bash
+conda export --file requirements.txt
+```
+
 ### Conda 환경 생성
 
 ```bash
 conda create --name amen --file ./requirements.txt
 ```
-
-  - 참고) Conda 환경 저장
-      ```bash
-        conda export --file requirements.txt
-      ```
 
 ### Conda 환경 활성화
 
@@ -351,46 +360,19 @@ python bible_search.py
            * `re.fullmatch : 문자열 전체가 패턴과 일치`
            * `입력받은 문자열 전체가 패턴과 정확하게 일치하면 True -> O`
 
-### 0️⃣ 데이터 찾기 & 전처리
+#### 허무지
+- 기억에 남는 코드
+    > bible_line += " " + line.strip()
 
-> 성경 데이터를 선택한 이유, 전처리 과정에서 예상과 달랐던 점
-> dictionary 함수를 사용하여 key 값은 '장:절' / value 값은 '구절'로 저장했어요
-
-### 1️⃣ 오늘의 말씀 🕊️  
-
-> random 함수를 사용하여 key index를 random으로 출력하는 기능을 만들었어요.
-> datetime 함수를 사용하여 1시간 마다 내용이 변경되도록 Seed를 현재 시간으로 고정했어요.
-
-### 2️⃣ 구절 찾기 🔍 
-
-> dictionary의 key 값을 입력받으면 해당하는 value 값을 출력하는 방식으로 구현했어요.
-> dictionary안에 없는 구절 번호를 입력할 때 예외 처리를 고민해야 했어요.
-> 정규표현식 중 fullmatch 함수를 사용하여 입력받은 key 값이 '숫자:숫자' 패턴과 일치하는지 확인하는 코드를 추가했어요.
-
-### 3️⃣ 범위로 찾기 🔢
-
-> 2번 기능과 동일하게 정규표현식 중 fullmatch 함수를 사용하여 입력받은 key 값과 패턴의 일치 여부를 확인했어요.
-> dictionary의 keys 함수를 사용하여 key 값만 새로운 list로 저장했어요.
-> list의 index 함수를 사용하여 입력받은 key 값의 index 위치를 start index로 저장했어요.
-> range 함수를 사용하여 start index 부터 start index + n 번지까지의 key 값과 그에 대응하는 value 값이 출력되는 방식으로 구현했어요.
-
-### 4️⃣ 단어로 찾기 🔤
-
-> 입력받은 단어와 dictionary 안에 일치하는 단어가 있는지 확인했어요.
-> 대소문자 구분을 위해 lower 함수를 사용하여 입력받은 단어와 dictionary 안에 있는 단어를 소문자로 변경했어요.
-> 정확한 단어 비교를 위해 split 함수를 사용하여 dictionary의 value 값은 공백을 기준으로 분리했어요.
-
-### 5️⃣ 장별 단어 모아보기 ☁️ 
-
-> 창세기 내용 전체를 워드클라우드로 만들어본 뒤, 각 장별로도 확장시켜봤어요.
-
-### 6️⃣ 말씀 담아두기 💌
-
-> 프로그램을 끈 뒤에도 내용이 남아있을 수 있게 파일 입출력을 이용했어요. 동일한 이름으로 입력했을 때, 해결 방법을 고민했습니다. 
- 
-### 7️⃣️ 말씀 다시 읽기 🔄
-
->
+- 고민했던 내용
+    - 원시 데이터를 장, 절, 성경 구절로 변경하는 과정에서 성경 구절에 있는 `\n`이 예상과는 다르게 동작
+    - 성경 구절 안에 있던 개행 문자가 한 절의 데이터를 나누면서 두 줄의 데이터가 생김
+    - 하나의 절에 해당하는 구절 내에서는 줄바꿈을 없애고자 함
+    - 해결 방법
+    - `str` 내장 함수 중 strip를 적용하여 내용을 합침
+- 후기
+    - 데이터 전처리를 하면서 이스케이프 문자를 처리하는 여러 방법이 있다는 점을 알게 됨
+    - strip을 사용하면 기존 개행 정보를 제거하여, 팀원이 구절 내용 전체를 큰따옴표로 감싼 방식을 보고 배움
 
 ---
 
