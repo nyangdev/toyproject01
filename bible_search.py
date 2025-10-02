@@ -2,7 +2,7 @@ from bible_csv import bible_dict
 import re
 
 def bible_search(num):
-    match = re.search(r"\d+:\d+", num)
+    match = re.fullmatch(r"\d+:\d+", num)
     # print(match)
     if match:
         if num in bible_dict:
