@@ -7,7 +7,7 @@ def bible_range():
     try:
         while True:
             start = input("🚩 시작 구절을 입력하세요 (예: 20:10) ▶ ")
-            match = re.search(r"\d+:\d+", start)
+            match = re.fullmatch(r"\d+:\d+", start)
             # 장:절 형식에 맞는 경우
             if match:
                 # 해당 구절이 bible안에 있는 경우
@@ -26,7 +26,7 @@ def bible_range():
                             start_index = key_list.index(start)
                             for i in range(start_index, start_index + int(n)):
                                 key = key_list[i]
-                                print(f"{key}\n{bible_dict[key]}")
+                                print(f"[{key}]\n{bible_dict[key]}")
                             break
                     break
                 # 해당 구절이 bible안에 없는 경우
