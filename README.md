@@ -1,4 +1,4 @@
-
+```markdown
 # ✝️️ 창세기 in Terminal: 말씀 한 줄, 은혜 한 모금 🕊️
 
 ---
@@ -72,48 +72,71 @@ python bible_search.py
 👉 메뉴를 선택하세요 ▶ 
 ```
 ---
-### 1️⃣ 오늘의 말씀 🕊️ 
+### 1️⃣ 오늘의 말씀 🕊️
+   
    * 초기 화면에서 `1`을 입력하면 진입할 수 있습니다.
 
      ```bash
      👉 메뉴를 선택하세요 ▶ 1
      ```
      
-   * [TBD - 로직 반영해서 내용 담기] 오늘의 말씀입니다. 내일은 다른 내용이겠죠?
----
-### 2️⃣ 구절 찾기 🔍 
+   * [TBD - 로직 반영해서 내용 담기] 시간 마다 오늘의 말씀이 변경됩니다. 1시간 뒤에는 다른 내용이겠죠?
 
+     ```bash
+     🍀 오전 10시의 구절
+     [39:21]
+     But the LORD was with Joseph, and shewed him mercy, and gave him favour in the sight of the keeper of the prison.
+     ```
+---
+### 2️⃣ 구절 찾기 🔍
+   
    * 초기 화면에서 `2`를 입력하면 진입할 수 있습니다.
 
      ```bash
      👉 메뉴를 선택하세요 ▶ 2
      ```
+   
    * 읽고싶은 장과 절을 `1:1` 형식으로 입력해주세요.
 
      ```bash
-     ✏️ 어떤 구절을 보고싶으신가요? (예: 50:26) 👉 20:10
+     ✏️ 검색할 구절을 입력하세요 (예: 20:10) ▶ 20:10
      ```
    
-
    * [TBD - 실제 결과 반영] 결과를 볼 수 있습니다.
 
      ```bash
      [20:10]
      And Abimelech said unto Abraham, What sawest thou, that thou hast done this thing?
      ```
+
+   * [TBD - 실제 예외 처리 반영] 예외 처리 결과를 볼 수 있습니다.
+
+     - `숫자:숫자` 형식으로 입력했지만 dictionary에 존재하지 않는 경우 입니다.
+         ```bash
+         ✏️ 검색할 구절을 입력하세요 (예: 20:10) ▶ 11:56
+         🚫 11:56은 구절 내에 없습니다!
+         ```
+
+     - `숫자:숫자` 형식으로 입력하지 않은 경우 입니다.
+         ```bash
+         ✏️ 검색할 구절을 입력하세요 (예: 20:10) ▶ bible 1:1
+         🚫 올바르지 않은 입력입니다!
+         ```
 ---
 ### 3️⃣ 범위로 찾기 🔢
-
+   
    * 초기 화면에서 `3`을 입력하면 진입할 수 있습니다.
 
      ```bash
      👉 메뉴를 선택하세요 ▶ 3
      ```
+   
    * 구절의 시작점을 입력해주세요.
 
      ```bash
      🚩✏️ 어떤 구절부터 보고싶으신가요? (예: 1:1) 👉 20:10
      ```
+   
    * 보고싶은 구절의 수를 입력해주세요.
 
      ```bash
@@ -129,53 +152,56 @@ python bible_search.py
      20:11 And Abraham said, Because I thought, Surely the fear of God is not in this place; and they will slay me for my wife's sake.
      20:12 And yet indeed she is my sister; she is the daughter of my father, but not the daughter of my mother; and she became my wife.
      ```
-   
 ---
-### 4️⃣ 단어로 찾기 🔤 
+### 4️⃣ 단어로 찾기 🔤
 
    * 초기 화면에서 `4`을 입력하면 진입할 수 있습니다.
 
      ```bash
      👉 메뉴를 선택하세요 ▶ 4
      ```
-     * 검색할 단어를 입력해주세요.
+   
+   * 검색할 단어를 입력해주세요.
     
-       ```bash
-       ✏️ 검색할 단어를 입력하세요. 대소문자는 신경쓰지 않아도 됩니다. 😉 ▶ hell
-       ```
-       * 결과가 없는 경우에도 친절하게 알려드립니다. 
-         ```bash
-         🚫 구절 안에 존재하지 않는 단어 입니다.
-         ```
-       * 단어가 포함된 구절 수를 확인할 수 있습니다. 몇 개를 출력할지 알려주세요. 제대로 된 숫자를 입력했는지도 같이 확인해드립니다. 
-        ```
-        ✏️ 검색할 단어를 입력하세요 ▶ heaven
-        🔍 [heaven] 포함된 구절 31개를 찾았습니다!
-        🔢 몇 개를 출력할까요? ▶ r
-        🚫 숫자만 입력해주세요!
-        🔢 몇 개를 출력할까요? ▶ 0
-        🚫 0개는 출력할 수 없습니다!
-        🔢 몇 개를 출력할까요? ▶ 1000
-        🚫 31개 이하로 입력해주세요!
-        🔢 몇 개를 출력할까요? ▶ 3
-        ```
-    
-     * 결과를 확인해볼까요?
+     ```bash
+     ✏️ 검색할 단어를 입력하세요. 대소문자는 신경쓰지 않아도 됩니다. 😉 ▶ hell
+     ```
+   
+   * 결과가 없는 경우에도 친절하게 알려드립니다. 
 
-         ```bash
-         [1:1]
-         In the beginning God created the heaven and the earth.
-         [1:8]
-         And God called the firmament Heaven. And the evening and the morning were the second day.
-         [1:9]
-         And God said, Let the waters under the heaven be gathered together unto one place, and let the dry land appear: and it was so.
-         ```
+     ```bash
+     🚫 구절 안에 존재하지 않는 단어 입니다.
+     ```
+   
+   * 단어가 포함된 구절 수를 확인할 수 있습니다. 몇 개를 출력할지 알려주세요. 제대로 된 숫자를 입력했는지도 같이 확인해드립니다. 
+
+     ```
+     ✏️ 검색할 단어를 입력하세요 ▶ heaven
+     🔍 [heaven] 포함된 구절 31개를 찾았습니다!
+     🔢 몇 개를 출력할까요? ▶ r
+     🚫 숫자만 입력해주세요!
+     🔢 몇 개를 출력할까요? ▶ 0
+     🚫 0개는 출력할 수 없습니다!
+     🔢 몇 개를 출력할까요? ▶ 1000
+     🚫 31개 이하로 입력해주세요!
+     🔢 몇 개를 출력할까요? ▶ 3
+     ```
+    
+   * 결과를 확인해볼까요?
+
+     ```bash
+     [1:1]
+     In the beginning God created the heaven and the earth.
+     [1:8]
+     And God called the firmament Heaven. And the evening and the morning were the second day.
+     [1:9]
+     And God said, Let the waters under the heaven be gathered together unto one place, and let the dry land appear: and it was so.
+     ```
      
 
        ```bash
        🔤 어떤 단어가 들어간 구문을 찾아볼까요? 대소문자를 신경쓰지 않아도 됩니다. 😉(예: Heaven) 👉 Hell
        ```
-    
 ---
 ### 5️⃣ 단어 모아보기 ☁️ 
 * 초기 화면에서 `5`를 입력하면 단어를 모은 그림을 볼 수 있습니다. 
@@ -246,19 +272,28 @@ python bible_search.py
 - 해결 방법
 
 ### 0️⃣ 데이터 찾기 & 전처리
+
 > 성경 데이터를 선택한 이유, 전처리 과정에서 예상과 달랐던 점
+> dictionary 함수를 사용하여 key 값은 '장:절' / value 값은 '구절'로 저장했어요
 
 ### 1️⃣ 오늘의 말씀 🕊️  
 
-> 랜덤 함수를 활용해서 기능을 만들었습니다. Seed를 이용해 같은 시간 내에는 나오는 내용을 고정해봤어요.
+> random 함수를 사용하여 key index를 random으로 출력하는 기능을 만들었어요.
+> datetime 함수를 사용하여 1시간 마다 내용이 변경되도록 Seed를 현재 시간으로 고정했어요.
 
 ### 2️⃣ 구절 찾기 🔍 
 
-> ~ 방식으로 구현했습니다. 없는 구절 번호를 입력할 때 예외 처리를 고민해야 했어요
+> dictionary의 key 값을 입력받으면 해당하는 value 값을 출력하는 방식으로 구현했어요.
+> dictionary안에 없는 구절 번호를 입력할 때 예외 처리를 고민해야 했어요.
+> 정규표현식 중 fullmatch 함수를 사용하여 입력받은 key 값이 '숫자:숫자' 패턴과 일치하는지 확인하는 코드를 추가했어요.
 
-### 3️⃣ 범위로 찾기 🔢 & 4️⃣ 단어로 찾기 🔤
+### 3️⃣ 범위로 찾기 🔢
 
 > 정규표현식을 사용했습니다. 단어 검색 결과가 많은 경우가 있어, 원하는 출력 범위를 정해서 조절했어요.
+
+### 4️⃣ 단어로 찾기 🔤
+
+> 단어 검색 결과가 많은 경우가 있어, 원하는 출력 범위를 정해서 조절했어요.
 
 ### 5️⃣ 장별 단어 모아보기 ☁️ 
 
@@ -272,3 +307,5 @@ python bible_search.py
 ---
 
 > **✝️ "요셉이 죽으매 그들이 그의 몸에 향 재료를 넣고 애굽에서 입관하였더라." (창세기 50:26) 🌟**
+
+```
