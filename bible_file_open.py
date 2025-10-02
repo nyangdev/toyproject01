@@ -4,7 +4,6 @@ import os
 folder = "bible_save"
 
 def bible_file_open():
-    # Todo
     """
     1. 저장되어있는 파일명 목록을 조회할 수 있도록 해준다
     2. 조회를 하고자하는 파일명을 입력받는다
@@ -28,6 +27,30 @@ def bible_file_open():
             for f in files:
                 print(f)
 
+            while 1:
+
+                file_choice = input("출력하고자하는 파일명을 입력하세요 : ")
+
+                file_path = os.path.join(folder, file_choice)
+
+                if os.path.exists(file_path):
+
+                    if os.path.getsize(file_path) == 0:
+                        print("비어있는 파일입니다.")
+                        break
+
+                    else:
+                        print(f"[{file_choice}] 파일 내용을 출력합니다.")
+                        with open(file_path, "r", encoding="utf-8") as file:
+                            lines = file.read().splitlines()
+                            for i in lines:
+                                print(f"{i}")
+                        break
+
+                else:
+                    print("존재하지않는 파일명입니다.")
+                    continue
+
         else:
             # 이중 검증
             print("폴더는 있지만 저장된 파일이 없습니다.")
@@ -35,36 +58,35 @@ def bible_file_open():
     else:
         print("저장된 폴더와 파일이 없습니다. 파일 저장 후 조회 기능을 이용해주세요.")
 
-    # TODO
     """
     유저가 파일명 선택
     선택한 파일 내용 출력해준다고 하고
     출력해줌
     """
 
-    while 1:
-
-        file_choice = input("출력하고자하는 파일명을 입력하세요 : ")
-
-        file_path = os.path.join(folder, file_choice)
-
-        if os.path.exists(file_path):
-
-            if os.path.getsize(file_path) == 0:
-                print("비어있는 파일입니다.")
-                break
-
-            else:
-                print(f"[{file_choice}] 파일 내용을 출력합니다.")
-                with open(file_path, "r", encoding="utf-8") as file:
-                    lines = file.read().splitlines()
-                    for i in lines:
-                        print(f"{i}")
-                break
-
-        else:
-            print("존재하지않는 파일명입니다.")
-            continue
+    # while 1:
+    #
+    #     file_choice = input("출력하고자하는 파일명을 입력하세요 : ")
+    #
+    #     file_path = os.path.join(folder, file_choice)
+    #
+    #     if os.path.exists(file_path):
+    #
+    #         if os.path.getsize(file_path) == 0:
+    #             print("비어있는 파일입니다.")
+    #             break
+    #
+    #         else:
+    #             print(f"[{file_choice}] 파일 내용을 출력합니다.")
+    #             with open(file_path, "r", encoding="utf-8") as file:
+    #                 lines = file.read().splitlines()
+    #                 for i in lines:
+    #                     print(f"{i}")
+    #             break
+    #
+    #     else:
+    #         print("존재하지않는 파일명입니다.")
+    #         continue
 
     # 예외 case
     """
