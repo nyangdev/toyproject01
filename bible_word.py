@@ -1,6 +1,5 @@
 from bible_csv import bible_dict
 
-
 def bible_word(word):
     cnt = 0
     word_dict = dict()
