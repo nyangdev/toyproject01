@@ -275,7 +275,7 @@ python bible_search.py
       👉 메뉴를 선택하세요 ▶ 5
       ```
 
-   * [TBD]장 번호이모그림으로 볼 수 있습니다.
+   * 입력한 장의 그림을 볼 수 있습니다.
     
       ```bash
       🔤 몇 장의 단어를 모아볼까요? (1 ~ 50) 👉 30
@@ -333,10 +333,9 @@ python bible_search.py
 
 #### 강지연
 - 기억에 남는 코드
-    ```bash
-    import re
+  > import re\
     match = re.fullmatch(r"\d+:\d+", num)
-    ```
+
 - 고민했던 내용
   1) 입력받은 num이 '숫자:숫자' 형식이고, bible_dict 안에 있다면
      > 정상 출력
