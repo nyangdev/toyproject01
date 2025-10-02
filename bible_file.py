@@ -23,9 +23,16 @@ def bible_file():
     # 저장용 폴더 만들기
     os.makedirs(folder, exist_ok=True)
 
-    file_name = input("파일명을 입력해주세요 : ")
+    while 1:
 
-    file_path = os.path.join(folder, file_name)
+        file_name = input("파일명을 입력해주세요 : ")
+        if file_name == "" or file_name == " ":
+            print("정확한 파일명을 입력해주세요.")
+
+        else:
+            file_path = os.path.join(folder, file_name)
+            break
+
 
     # 파일이 이미 존재하면 append, 없으면 새로 만들기
 
